@@ -1,0 +1,31 @@
+{
+  "title": "webcomp-pages-tabs",
+  "description": "Component for organising contents using a tab-based approach.",
+  "descriptionAbstract": "Tabs component",
+  "license": "AGPL-3.0",
+  "repositoryUrl": "https://github.com/noi-techpark/webcomp-pages-tabs",
+  "authors": [
+    {
+      "name": "NOI",
+      "email": "info@noi.bz.it",
+      "organization": "NOI S.p.A",
+      "organizationUrl": "https://noi.bz.it"
+    },
+    {
+      "name": "Daniel Rampanelli",
+      "email": "hello@danielrampanelli.com"
+    }
+  ],
+  "image": null,
+  "searchTags": ["pages", "tab"],
+  "dist": {
+    "basePath": "dist",
+    "files": [
+      "pages-tabs.min.js"
+    ]
+  },
+  "configuration": {
+    "tagName": "pages-tabs",
+    "options": []
+  }
+}
