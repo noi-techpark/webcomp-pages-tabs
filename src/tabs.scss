@@ -1,0 +1,436 @@
+@import 'bourbon';
+@import '~breakpoint-sass/stylesheets/breakpoint.scss';
+@import '~@glidejs/glide/src/assets/sass/glide.core';
+@import '~owl.carousel/dist/assets/owl.carousel.css';
+@import '~slick-carousel/slick/slick.scss';
+
+@mixin default-text() {
+  color: #758592;
+  font-family: 'pages-kievit', sans-serif;
+  font-size: 17px;
+  line-height: 25px;
+  font-weight: 400;
+
+  b, strong {
+    font-weight: 700;
+  }
+}
+
+#root {
+  #container {
+    #contents {
+      padding: 32px 0;
+
+      p {
+        @include default-text();
+
+        margin: 0 0 10px 0;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        color: #758592;
+        font-family: 'pages-suedtirol-next', sans-serif;
+        font-weight: 400;
+        line-height: 1.1;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 34px;
+        margin: 0 0 20px 0;
+      }
+
+      // TODO styles for h2, h3, h4, h5, h6
+
+      @include breakpoint(768px) {
+        padding: 32px 96px;
+
+        h1 {
+          font-size: 48px;
+        }
+      }
+    }
+  }
+
+  #wrapper {
+    backface-visibility: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+
+    @include breakpoint(992px) {
+      padding: 64px;
+    }
+
+    #contains-labels-and-tabs {
+      margin: 0 auto;
+
+      @media (min-width: 992px) {
+        max-width: 960px;
+      }
+
+      @media (min-width: 1240px) {
+        max-width: 1160px;
+      }
+    }
+
+    #contains-labels {
+      background-color: #ffffff;
+      padding: 0;
+      position: relative;
+
+      @include breakpoint(992px) {
+        background-color: transparent;
+        margin: 0 0 24px 0;
+        padding: 0 80px;
+      }
+
+      button.prev, button.next {
+        appearance: none;
+        background-color: #758592;
+        border: 0;
+        border-radius: 48px;
+        cursor: pointer;
+        display: none;
+        height: 48px;
+        position: absolute;
+        text-align: center;
+        top: 40%;
+        transform: translateY(-50%);
+        width: 48px;
+        z-index: 5000;
+
+        img {
+          height: 24px;
+          position: relative;
+          width: 20px;
+
+          @include breakpoint(992px) {
+            height: 20px;
+            width: 16px;
+          }
+        }
+
+        &.prev {
+          left: 0;
+
+          img {
+            left: -1px;
+            top: 2px;
+          }
+        }
+
+        &.next {
+          right: 0;
+
+          img {
+            left: 1px;
+            top: 2px;
+          }
+        }
+
+        @include breakpoint(992px) {
+          display: block;
+        }
+      }
+
+      #labels {
+        .glide__slides {
+          margin: 0;
+          padding: 0;
+
+          @include breakpoint(992px) {
+            padding: 0 0 10px 0;
+          }
+
+          .contains-label {
+            flex: 1;
+            height: auto;
+            position: relative;
+            width: auto;
+
+            .label {
+              align-items: center;
+              background-color: #ffffff;
+              box-sizing: border-box;
+              cursor: pointer;
+              display: flex;
+              height: 100%;
+              justify-content: center;
+              margin: 0;
+              padding: 8px;
+              position: relative;
+              text-align: center;
+              vertical-align: middle;
+              z-index: 1000;
+
+              @include breakpoint(992px) {
+                padding: 16px;
+              }
+
+              .header {
+                color: #000000;
+                display: inline-block;
+                font-family: 'pages-kievit', sans-serif;
+                font-size: 17px;
+              }
+            }
+          }
+
+          .glide__slide--active {
+            @include breakpoint(992px) {
+              &:after {
+                background: transparent;
+                border-width: 16px;
+                border-style: solid;
+                border-color: #758592 transparent transparent transparent;
+                bottom: -26px;
+                box-sizing: border-box;
+                content: '';
+                display: block;
+                height: 0;
+                left: 50%;
+                position: absolute;
+                transform: translateX(-50%);
+                width: 0;
+                z-index: 500;
+              }
+            }
+
+            .label {
+              background-color: #758592;
+
+              .header {
+                color: #ffffff;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    #contains-tabs {
+      #tabs {
+        .tab {
+          .tab-contents {
+            background-color: #ffffff;
+
+            .contains-images {
+              &:after {
+                content: "";
+                display: table;
+                clear: both;
+              }
+
+              .images {
+                .contains-figure {
+                  float: left;
+
+                  &:nth-child(-n+3) {
+                    width: 50%;
+                  }
+
+                  &:nth-child(3) {
+                    width: 100%;
+                  }
+                }
+
+                .contains-image {
+                  position: relative;
+
+                  .image {
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    bottom: 0;
+                    left: 0;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    z-index: 500;
+                  }
+
+                  .copyright {
+                    bottom: 0;
+                    display: block;
+                    left: 0;
+                    opacity: 0;
+                    position: absolute;
+                    transition: all 0.2s ease-in-out;
+                    z-index: 1000;
+
+                    .copyright-text {
+                      background-color: #000000;
+                      color: #ffffff;
+                      display: inline-block;
+                      font-family: 'pages-kievit', sans-serif;
+                      font-size: 13px;
+                      padding: 3px;
+                    }
+                  }
+
+                  &:after {
+                    content: '';
+                    display: block;
+                    padding-bottom: percentage(555 / 786);
+                  }
+
+                  &:hover {
+                    .copyright {
+                      opacity: 1;
+                    }
+                  }
+                }
+
+                .contains-map {
+                  position: relative;
+
+                  img {
+                    max-width: 100%;
+                    width: 100%;
+
+                    @include breakpoint(992px) {
+                      width: auto;
+                    }
+                  }
+
+                  .point {
+                    position: absolute;
+                    transform: translate(-50%, -52px);
+
+                    .marker {
+                      background-position: center center;
+                      background-repeat: no-repeat;
+                      background-size: contain;
+                      display: block;
+                      height: 52px;
+                      margin: 0 auto;
+                      width: 52px;
+                    }
+
+                    .caption {
+                      color: #758592;
+                      font-family: 'pages-kievit', sans-serif;
+                      font-size: 17px;
+                      padding: 4px 0;
+                    }
+                  }
+                }
+              }
+            }
+
+            .contains-contents {
+              .contents {
+                padding: 24px;
+
+                @include breakpoint(992px) {
+                  padding: 32px;
+                }
+
+                .title, .subtitle {
+                  color: #758592;
+                  font-family: 'pages-suedtirol-next', sans-serif;
+                }
+
+                .title {
+                  font-size: 34px;
+                  margin: 0 0 5px 0;
+                }
+
+                .subtitle {
+                  font-size: 24px;
+                }
+
+                .content {
+                  color: #758592;
+                  font-family: 'pages-kievit', sans-serif;
+                  font-size: 17px;
+                  line-height: 25px;
+                  font-weight: 400;
+
+                  b, strong {
+                    font-weight: 700;
+                  }
+                }
+
+                .action {
+                  .label {
+                    border-bottom: 1px solid #e0e0e0;
+                    color: #758592;
+                    font-family: 'pages-suedtirol-next', sans-serif;
+                    font-size: 24px;
+                    padding: 32px 0 6px 0;
+                  }
+
+                  .link {
+                    background-color: transparent!important;
+                    background-size: 468px 40px;
+                    background-position: 0 50%;
+                    background-repeat: no-repeat;
+                    border: 0;
+                    border-radius: 0;
+                    color: white;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'pages-suedtirol-next', sans-serif;
+                    font-size: 17px;
+                    height: 40px;
+                    font-weight: 400;
+                    line-height: 40px;
+                    margin-bottom: 0;
+                    margin-right: 48px;
+                    margin-top: 32px;
+                    min-width: 130px;
+                    outline: none;
+                    padding: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    text-indent: 46px;
+                    touch-action: manipulation;
+                    transition: color .25s ease-in-out, background-color .25s ease-in-out, border-color .25s ease-in-out, box-shadow .25s ease-in-out;
+                    vertical-align: middle;
+
+                    &:after {
+                      background-size: 48px 40px;
+                      box-sizing: border-box;
+                      content: '';
+                      display: block;
+                      height: 40px;
+                      position: absolute;
+                      right: -48px;
+                      top: 0;
+                      width: 48px;
+                    }
+
+                    &:hover {
+                      box-shadow: none;
+                      color: #de7000;
+                    }
+                  }
+                }
+              }
+            }
+
+            @include breakpoint(992px) {
+              display: flex;
+
+              .contains-images, .contains-contents {
+                flex: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .slick-track {
+      display: flex !important;
+    }
+
+    .slick-slide {
+      height: auto;
+    }
+  }
+}
